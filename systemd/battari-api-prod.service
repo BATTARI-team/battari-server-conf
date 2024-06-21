@@ -1,0 +1,23 @@
+[Unit]
+Description=battari api production
+
+[Service]
+# systemd will run this executable to start the service
+# if /usr/bin/dotnet doesn't work, use `which dotnet` to find correct dotnet executable path
+WorkingDirectory=/home/runner/battari-api-main-runner/_work/BATTARI-api/BATTARI-api/bin/Release/net8.0/publish/
+ExecStart=/usr/share/dotnet/dotnet BATTARI-api.dll 6060
+# to query logs using journalctl, set a logical name here
+SyslogIdentifier=battari-api-prod
+
+# Use your username to keep things simple.
+# If you pick a different user, make sure dotnet and all permissions are set correctly to run the app
+# To update permissions, use 'chown yourusername -R /srv/HelloWorld' to take ownership of the folder and files,
+#       Use 'chmod +x /srv/HelloWorld/HelloWorld' to allow execution of the executable file
+User=root
+
+# This environment variable is necessary when dotnet isn't loaded for the specified user.
+# To figure out this value, run 'env | grep DOTNET_ROOT' when dotnet has been loaded into your shell.
+Environment=DOTNET_ROOT=/usr/share/dotnet
+
+[Install]
+WantedBy=default.target
