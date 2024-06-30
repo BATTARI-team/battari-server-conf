@@ -4,8 +4,8 @@ Description=Hello World console application
 [Service]
 # systemd will run this executable to start the service
 # if /usr/bin/dotnet doesn't work, use `which dotnet` to find correct dotnet executable path
-WorkingDirectory=/home/runner/battari-api-dev-runner/_work/BATTARI-api/BATTARI-api/bin/Release/net8.0/publish/
-ExecStart=/usr/share/dotnet/dotnet BATTARI-api.dll 5050
+WorkingDirectory=/home/runner/battari-api-dev-runner/_work/BATTARI-api/BATTARI-api
+ExecStart=/usr/share/dotnet/dotnet run 5050
 # to query logs using journalctl, set a logical name here
 SyslogIdentifier=battari-api-dev
 
